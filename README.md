@@ -164,8 +164,61 @@ Repo.one(
 ```
 
 ### The Json API
+Phoenix includes a built-in generator for creating APIs, which automatically generates migrations, schemas, controllers, tests, and more. In contrast, Laravel doesn't have a built-in generator that provides such comprehensive features.
 ```shell
-
+mix phx.gen.json Posts Post post title:string description:string
 ```
 
 ### Testing
+Configure the test database in `config/test.exs` as:
+```elixir
+config :hiive, Hiive.Repo,
+ database: "database/database-testing.sqlite",
+ pool: Ecto.Adapters.SQL.Sandbox
+
+config :hiive, ecto_repos: [Hiive.Repo]
+```
+
+After setting up database, we should run the migration before running tests as:
+```shell
+MIX_ENV=test mix ecto.migrate
+```
+
+To reset the database:
+```shell
+MIX_ENV=test mix ecto.drop; MIX_ENV=test mix ecto.migrate
+```
+
+Which I found similar to the Laravel
+```shell
+php artisan migrate:fresh
+```
+
+#### The first Test
+Let's test whether our API endpoint accepts user-submitted data and successfully stores it in the SQLite database.
+
+Out test would look like:
+```elixir
+defmodule HiiveWeb.PostControllerTest do
+  use HiiveWeb.ConnCase
+  use Hiive.DataCase, async: true
+
+  alias Hiive.Posts
+
+  @create_attrs %{
+    title: "This is my test blog",
+    description: "the description of a test blog"
+  }
+
+  describe "creates post" do
+    test "user can create a post", %{conn: conn} do
+      conn = post(conn, ~p"/api/posts", @create_attrs)
+      assert %{"id" => id} = json_response(conn, 201)["data"]
+
+      post = Posts.get_post!(id)
+      assert @create_attrs[:title] == post.title
+      assert @create_attrs[:description] == post.description
+    end
+  end
+end
+```

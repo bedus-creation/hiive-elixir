@@ -3,7 +3,6 @@ defmodule Hiive.Models.Post do
   import Ecto.Changeset
 
   import Ecto.Query, warn: false
-  alias Hiive.Repo
 
   schema "post" do
     field :description, :string

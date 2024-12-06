@@ -24,7 +24,7 @@ config :phoenix_live_view,
   enable_expensive_runtime_checks: true
 
 config :hiive, Hiive.Repo,
- database: "database-testing.sqlite",
+ database: "database/database-testing.sqlite",
  pool: Ecto.Adapters.SQL.Sandbox
 
 config :hiive, ecto_repos: [Hiive.Repo]

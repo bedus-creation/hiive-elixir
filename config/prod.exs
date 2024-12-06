@@ -12,6 +12,6 @@ config :logger, level: :info
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
 config :hiive, Hiive.Repo,
-       database: "sqlite.db"
+       database: "database/database.sqlite"
 
 config :hiive, ecto_repos: [Hiive.Repo]
