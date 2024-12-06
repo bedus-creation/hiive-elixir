@@ -72,6 +72,6 @@ config :phoenix_live_view,
 config :swoosh, :api_client, false
 
 config :hiive, Hiive.Repo,
-       database: "database-testing.sqlite"
+       database: "database/database.sqlite"
 
 config :hiive, ecto_repos: [Hiive.Repo]

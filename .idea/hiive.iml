@@ -212,5 +212,12 @@
     <orderEntry type="library" name="websock" level="project" />
     <orderEntry type="library" name="hpax" level="project" />
     <orderEntry type="library" name="benchee_markdown" level="project" />
+    <orderEntry type="module-library">
+      <library name="Elixir at /opt/homebrew/Cellar/elixir/1.17.3/lib/elixir">
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
