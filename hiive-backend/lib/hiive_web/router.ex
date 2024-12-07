@@ -24,6 +24,7 @@ defmodule HiiveWeb.Router do
 
   scope "/api", HiiveWeb do
     pipe_through :api
+
     resources "/urls", UrlController, except: [:new, :edit]
     resources "/posts", PostController, except: [:new, :edit]
   end
