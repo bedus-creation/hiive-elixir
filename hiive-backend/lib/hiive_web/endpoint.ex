@@ -1,6 +1,14 @@
 defmodule HiiveWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :hiive
 
+  plug Corsica,
+    origins: ["http://localhost:5173"],
+    allow_methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers: ["Authorization", "Content-Type"],
+    allow_credentials: true,
+    max_age: 86400,
+    log: [rejected: :error, accepted: :info]
+
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.

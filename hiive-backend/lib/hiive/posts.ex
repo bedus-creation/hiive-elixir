@@ -6,7 +6,8 @@ defmodule Hiive.Posts do
   alias Hiive.Models.Post
 
   def list_posts do
-    Repo.all(Post)
+    from(p in Post, order_by: [desc: p.inserted_at])
+    |> Repo.all()
   end
 
   def create_post(attrs \\ %{}) do

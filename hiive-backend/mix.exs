@@ -47,7 +47,9 @@ defmodule Hiive.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:ecto_sql, "~> 3.12"},
-      {:ecto_sqlite3, "~> 0.17"}
+      {:ecto_sqlite3, "~> 0.17"},
+      {:corsica, "~> 1.1.3"},
+      {:timex, "~> 3.7"}
     ]
   end
 
