@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios"
 import React, { useState } from "react"
 import { Error } from "../../components/form/Error.tsx"
+import TextInput from "../../components/form/TextInput.tsx"
 
 export function PostCreate() {
     const [formData, setFormData] = useState({ title: "", description: "" })
@@ -39,7 +40,7 @@ export function PostCreate() {
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label>Title:</label>
-                            <input
+                            <TextInput
                                 name="title"
                                 value={formData.title}
                                 onChange={handleChange}
